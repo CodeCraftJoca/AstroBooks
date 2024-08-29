@@ -1,0 +1,35 @@
+﻿using AstroBooks.Domain.Entities;
+using FluentValidation;
+
+namespace AstroBooks.Application.DTO
+{
+    public class BookDTO
+    {
+        public Guid Id { get; set; }
+        public string Title { get; set; }
+        public List<Genre> BookGenre { get; set; }
+        public List<Author> BookAuthor { get; set; }
+        public List<Publisher> Publisher { get; set; }
+        public string ISBN { get; set; }
+        public string Language { get; set; }
+    }
+
+    public class BookDtoValidator: AbstractValidator<BookDTO>
+    {
+        public BookDtoValidator()
+        {
+            RuleFor(x => x.Title).NotEmpty().WithMessage("Title is required");
+            RuleFor(x => x.BookAuthor).NotEmpty().WithMessage("Author is required");
+            RuleFor(x => x.Publisher).NotEmpty().WithMessage("Publisher is required");
+            RuleFor(x => x.ISBN).NotEmpty().WithMessage("ISBN is required");
+            RuleFor(x => x.Language).NotEmpty().WithMessage("Language is required");
+            RuleFor(x => x.BookGenre).NotEmpty().WithMessage("Genre is required");
+        }
+
+        private bool IsValidISBN(string isbn)
+        {
+            // Implement your ISBN validation logic here (e.g., regex check)
+            return true; // Simplification for example purposes
+        }
+    }   
+}

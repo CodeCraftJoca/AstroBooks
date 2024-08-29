@@ -5,6 +5,24 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AstroBooks", "AstroBooks\AstroBooks.csproj", "{B0EE0386-C87B-46C5-86E6-66DA02488856}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{06A67754-6E26-455A-89CB-4517BB60165F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{D0094DBD-02FA-4C83-9F5A-C92252F4D211}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{7D1FAE0D-4C97-47CB-8A8D-CE120683E450}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{269C4043-D074-498F-996D-8E6DC411076D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{586B95E8-BB59-4809-A981-327FAC9FA239}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AstroBooks.Application", "AstroBooks.Application\AstroBooks.Application.csproj", "{F3253CA4-BECF-42EE-B41E-E59B48CF4536}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AstroBooks.Domain", "AstroBooks.Domain\AstroBooks.Domain.csproj", "{FC92E8C2-BAD3-4F96-9BB4-3289E2353873}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AstroBooks.Infrastructure", "AstroBooks.Infrastructure\AstroBooks.Infrastructure.csproj", "{7B709618-C9FF-4365-817A-65B87B47F35E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AstroBooks.Tests", "AstroBooks.Tests\AstroBooks.Tests.csproj", "{774A1927-1D1B-4717-B72B-05EA54292643}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +33,32 @@ Global
 		{B0EE0386-C87B-46C5-86E6-66DA02488856}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0EE0386-C87B-46C5-86E6-66DA02488856}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0EE0386-C87B-46C5-86E6-66DA02488856}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3253CA4-BECF-42EE-B41E-E59B48CF4536}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3253CA4-BECF-42EE-B41E-E59B48CF4536}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3253CA4-BECF-42EE-B41E-E59B48CF4536}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3253CA4-BECF-42EE-B41E-E59B48CF4536}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC92E8C2-BAD3-4F96-9BB4-3289E2353873}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC92E8C2-BAD3-4F96-9BB4-3289E2353873}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC92E8C2-BAD3-4F96-9BB4-3289E2353873}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC92E8C2-BAD3-4F96-9BB4-3289E2353873}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B709618-C9FF-4365-817A-65B87B47F35E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B709618-C9FF-4365-817A-65B87B47F35E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B709618-C9FF-4365-817A-65B87B47F35E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B709618-C9FF-4365-817A-65B87B47F35E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{774A1927-1D1B-4717-B72B-05EA54292643}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{774A1927-1D1B-4717-B72B-05EA54292643}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{774A1927-1D1B-4717-B72B-05EA54292643}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{774A1927-1D1B-4717-B72B-05EA54292643}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B0EE0386-C87B-46C5-86E6-66DA02488856} = {06A67754-6E26-455A-89CB-4517BB60165F}
+		{F3253CA4-BECF-42EE-B41E-E59B48CF4536} = {D0094DBD-02FA-4C83-9F5A-C92252F4D211}
+		{FC92E8C2-BAD3-4F96-9BB4-3289E2353873} = {7D1FAE0D-4C97-47CB-8A8D-CE120683E450}
+		{7B709618-C9FF-4365-817A-65B87B47F35E} = {269C4043-D074-498F-996D-8E6DC411076D}
+		{774A1927-1D1B-4717-B72B-05EA54292643} = {586B95E8-BB59-4809-A981-327FAC9FA239}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C553629B-D752-455C-924E-A2CADA40E220}
