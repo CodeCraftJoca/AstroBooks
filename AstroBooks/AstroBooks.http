@@ -1,0 +1,6 @@
+@AstroBooks_HostAddress = http://localhost:5065
+
+GET {{AstroBooks_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
