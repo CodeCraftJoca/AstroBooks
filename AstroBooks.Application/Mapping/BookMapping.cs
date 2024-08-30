@@ -1,4 +1,5 @@
 ﻿using AstroBooks.Application.DTO;
+using AstroBooks.Application.InputModel;
 using AstroBooks.Domain.Entities;
 using AutoMapper;
 using System;
@@ -16,7 +17,24 @@ namespace AstroBooks.Application.Mapping
         {
             CreateMap<Book, BookDTO>();
             CreateMap<BookDTO, Book>();
-              
+            CreateMap<Author, AuthorDTO>()
+                        .ForMember(dest => dest.Books, opt => opt.Condition(src => src.Books != null));
+            CreateMap<AuthorDTO, Author>()
+                    .ForMember(dest => dest.Books, opt => opt.Condition(src => src.Books != null));
+            CreateMap<AuthorRequestModel, AuthorDTO>()
+                        .ForMember(dest => dest.Books, opt => opt.Ignore())
+                        .ForMember(dest => dest.Id, opt => opt.Ignore());
+
+            CreateMap<AuthorUpdateRequestModel, AuthorDTO>()
+                       .ForMember(dest => dest.Books, opt => opt.Ignore());
+
+            CreateMap<AuthorUpdateRequestModel, Author>()
+                .ForMember(dest => dest.Books, opt => opt.Ignore());
+
+
+
+
+
 
         }
     }

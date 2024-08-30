@@ -2,7 +2,7 @@
 using AstroBooks.Infrastructure.Contexts;
 using AstroBooks.Infrastructure.Repository.Interfaces;
 
-namespace AstroBooks.Infrastructure.Repository.BookRepository
+namespace AstroBooks.Infrastructure.Repository
 {
     public class BookRepository : IBookRepository
     {
@@ -18,7 +18,7 @@ namespace AstroBooks.Infrastructure.Repository.BookRepository
 
         public Task<Book> CreateBook(Book book)
         {
-           if (book == null)
+            if (book == null)
             {
                 throw new ArgumentNullException(nameof(book));
             }
