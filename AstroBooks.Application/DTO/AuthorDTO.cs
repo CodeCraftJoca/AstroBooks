@@ -17,9 +17,9 @@ namespace AstroBooks.Application.DTO
         public List<Book> Books { get; set; } = new List<Book>();
     }
 
-    public class ValidateAuthorDTO : AbstractValidator<AuthorDTO>
+    public class ValidatePublisherDTO : AbstractValidator<AuthorDTO>
     {
-        public ValidateAuthorDTO()
+        public ValidatePublisherDTO()
         {
             RuleFor(x => x.Name).NotEmpty().WithMessage("Name is required");
             RuleFor(x => x.Email).NotEmpty().WithMessage("Email is required");

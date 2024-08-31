@@ -40,7 +40,7 @@ namespace AstroBooks.Application.UseCases
 
         private void ValidateAuthor(AuthorDTO authorDTO)
         {
-            var validator = new ValidateAuthorDTO();
+            var validator = new ValidatePublisherDTO();
             var validationResult = validator.Validate(authorDTO);
             if (!validationResult.IsValid)
             {

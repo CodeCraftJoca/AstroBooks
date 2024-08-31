@@ -1,4 +1,5 @@
 ﻿using AstroBooks.Application.Intefaces;
+using AstroBooks.Application.Intefaces.Publisher;
 using AstroBooks.Application.UseCases;
 using AstroBooks.Infrastructure.Repository;
 using AstroBooks.Infrastructure.Repository.Interfaces;
@@ -11,6 +12,7 @@ namespace AstroBooks.Configuration
         {
             services.AddScoped<IAuthorRepository, AuthorRepository>();
             services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<IPublisherRepository, PublisherRepository>();
 
             services.AddScoped<IGetBookUseCase, GetBookUseCase>();
             services.AddScoped<ICreateBookUseCase, CreateBookUseCase>();
@@ -18,6 +20,10 @@ namespace AstroBooks.Configuration
             services.AddScoped<ICreateAuthorUseCase, CreateAuthorUseCase>();
             services.AddScoped<IGetAuthorUseCase, GetAuthorUseCase>();
             services.AddScoped<IUpdateAuthorUseCase, UpdateAuthorUseCase>();
+
+            services.AddScoped<ICreatePublisherUseCase, CreatePublisherUseCase>();
+            services.AddScoped<IGetPublisherUseCase, GetPublisherUseCase>();
+            services.AddScoped<IUpdatePublisherUseCase, UpdatePublisherUseCase>();
 
             return services;
         }
