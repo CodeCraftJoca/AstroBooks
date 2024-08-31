@@ -13,6 +13,7 @@ namespace AstroBooks.Configuration
             services.AddScoped<IAuthorRepository, AuthorRepository>();
             services.AddScoped<IBookRepository, BookRepository>();
             services.AddScoped<IPublisherRepository, PublisherRepository>();
+            services.AddScoped<IGenreRepository, GenreRepository>();
 
             services.AddScoped<IGetBookUseCase, GetBookUseCase>();
             services.AddScoped<ICreateBookUseCase, CreateBookUseCase>();
@@ -24,6 +25,10 @@ namespace AstroBooks.Configuration
             services.AddScoped<ICreatePublisherUseCase, CreatePublisherUseCase>();
             services.AddScoped<IGetPublisherUseCase, GetPublisherUseCase>();
             services.AddScoped<IUpdatePublisherUseCase, UpdatePublisherUseCase>();
+
+            services.AddScoped<ICreateGenreUseCase, CreateGenreUseCase>();
+            services.AddScoped<IGetGenreUseCase, GetGenreUseCase>();
+            services.AddScoped<IUpdateGenreUseCase, UpdateGenreUseCase>();
 
             return services;
         }

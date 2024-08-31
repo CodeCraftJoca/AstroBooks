@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AstroBooks.Domain.Entities
+namespace AstroBooks.Application.RequestModel
 {
-    public class Genre
+    public class CreateGenreRequestModel
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public List<Book> Books { get; set; } = new List<Book>();
+
     }
 }
