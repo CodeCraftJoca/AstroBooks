@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AstroBooks.Application.Intefaces
+namespace AstroBooks.Application.Services.Interfaces
 {
-    public interface ICreateBookUseCase
+    public interface IBookBuilderService
     {
         Task<BookDTO> CreateBook(CreateBookRequestModel book);
-
+        Task<BookDTO> UpdateBook(UpdateBookRequestModel book);
     }
 }

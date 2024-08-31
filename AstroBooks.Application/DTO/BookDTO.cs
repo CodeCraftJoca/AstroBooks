@@ -7,9 +7,11 @@ namespace AstroBooks.Application.DTO
     {
         public Guid Id { get; set; }
         public string Title { get; set; }
-        public List<Genre> BookGenre { get; set; }
-        public List<Author> BookAuthor { get; set; }
-        public List<Publisher> Publisher { get; set; }
+        public ICollection<Author> Authors { get; set; }
+        public ICollection<Publisher> Publishers { get; set; }
+        public ICollection<Genre> Genres { get; set; }
+
+
         public string ISBN { get; set; }
         public string Language { get; set; }
     }
@@ -19,11 +21,11 @@ namespace AstroBooks.Application.DTO
         public BookDtoValidator()
         {
             RuleFor(x => x.Title).NotEmpty().WithMessage("Title is required");
-            RuleFor(x => x.BookAuthor).NotEmpty().WithMessage("Author is required");
-            RuleFor(x => x.Publisher).NotEmpty().WithMessage("Publisher is required");
+            RuleFor(x => x.Authors).NotEmpty().WithMessage("Author is required");
+            RuleFor(x => x.Publishers).NotEmpty().WithMessage("Publisher is required");
             RuleFor(x => x.ISBN).NotEmpty().WithMessage("ISBN is required");
             RuleFor(x => x.Language).NotEmpty().WithMessage("Language is required");
-            RuleFor(x => x.BookGenre).NotEmpty().WithMessage("Genre is required");
+            RuleFor(x => x.Genres).NotEmpty().WithMessage("Genre is required");
         }
 
         private bool IsValidISBN(string isbn)

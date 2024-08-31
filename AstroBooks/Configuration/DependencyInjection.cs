@@ -1,8 +1,12 @@
 ﻿using AstroBooks.Application.Intefaces;
 using AstroBooks.Application.Intefaces.Publisher;
+using AstroBooks.Application.Mapping;
+using AstroBooks.Application.Services.Interfaces;
 using AstroBooks.Application.UseCases;
+using AstroBooks.Application.UseCases.Book;
 using AstroBooks.Infrastructure.Repository;
 using AstroBooks.Infrastructure.Repository.Interfaces;
+using AstroBooks.Infrastructure.Services;
 
 namespace AstroBooks.Configuration
 {
@@ -17,6 +21,8 @@ namespace AstroBooks.Configuration
 
             services.AddScoped<IGetBookUseCase, GetBookUseCase>();
             services.AddScoped<ICreateBookUseCase, CreateBookUseCase>();
+            services.AddScoped<IUpdateBookUseCase, UpdateBookUseCase>();
+            services.AddScoped<IDeleteBookUseCase, DeleteBookUseCase>();
 
             services.AddScoped<ICreateAuthorUseCase, CreateAuthorUseCase>();
             services.AddScoped<IGetAuthorUseCase, GetAuthorUseCase>();
@@ -30,6 +36,9 @@ namespace AstroBooks.Configuration
             services.AddScoped<IGetGenreUseCase, GetGenreUseCase>();
             services.AddScoped<IUpdateGenreUseCase, UpdateGenreUseCase>();
 
+            //Services
+            services.AddScoped<IBookBuilderService, BookBuilderService>();
+            services.AddScoped<IbookMapper, BookMapper>();
             return services;
         }
     }

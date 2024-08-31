@@ -1,5 +1,7 @@
 ﻿using AstroBooks.Application.DTO;
 using AstroBooks.Application.Intefaces;
+using AstroBooks.Application.RequestModel;
+using AstroBooks.Application.Services.Interfaces;
 using AstroBooks.Domain.Entities;
 using AstroBooks.Infrastructure.Repository.Interfaces;
 using AutoMapper;
@@ -16,28 +18,41 @@ namespace AstroBooks.Application.UseCases
     public class CreateBookUseCase : ICreateBookUseCase
     {
         private readonly IBookRepository _IBookRepository;
+        private readonly IBookBuilderService _bookBuilderService;
         private readonly IMapper _mapper;
-        public CreateBookUseCase(IBookRepository bookRepository, IMapper mapper)
-        {
+        private readonly IbookMapper _bookMapper;
 
+
+        public CreateBookUseCase(IBookRepository bookRepository, IMapper mapper, IBookBuilderService bookBuilderService, IbookMapper bookMapper)
+        {
+            _bookBuilderService = bookBuilderService;
             _IBookRepository = bookRepository;
             _mapper = mapper;
+            _bookMapper = bookMapper;
         }
-        public Task<BookDTO> CreateBook(BookDTO newBook)
+        public async Task<BookDTO> CreateBook(CreateBookRequestModel newBook)
         {
-            BookValidation(newBook);
-            var BookEntity = _IBookRepository.CreateBook(_mapper.Map<Book>(newBook));
-            return Task.FromResult(_mapper.Map<BookDTO>(BookEntity));
+            try
+            {
+                var newBookDto = await _bookBuilderService.CreateBook(newBook);
+                BookValidation(newBookDto);
+                var BookEntity = await _IBookRepository.CreateBookAsync(_bookMapper.MapToEntity(newBookDto));
 
+                return _bookMapper.MapToDto(BookEntity);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        private Guid GenerateUniqueBookId()
+        private async Task<Guid> GenerateUniqueBookId()
         {
             Guid newId;
             do
             {
                 newId = Guid.NewGuid();
-            } while (_IBookRepository.BookIdExistsAsync(newId) != null);
+            } while (await _IBookRepository.BookIdExistsAsync(newId) == true);
 
             return newId;
         }
@@ -53,10 +68,10 @@ namespace AstroBooks.Application.UseCases
             }
         }
 
-        private void BookValidation(BookDTO bookDTO)
+        private async void BookValidation(BookDTO bookDTO)
         {
             // Gera um ID único para o livro
-            bookDTO.Id = GenerateUniqueBookId();
+            bookDTO.Id = await GenerateUniqueBookId();
 
             // Valida os dados do livro
             ValidateBookData(bookDTO);
