@@ -35,32 +35,32 @@ namespace AstroBooks.Controllers.v1
         [Route("GetPublisherByName")]
         public async Task<IActionResult> GetPublisherByName([FromQuery] string query)
         {
-            var authors = await _getPublisherUseCase.GetPublisherNameAsync(query);
-            return Ok(authors);
+            var Publishers = await _getPublisherUseCase.GetPublisherNameAsync(query);
+            return Ok(Publishers);
         }
 
         [HttpGet]
         [Route("GetPublisherById")]
-        public async Task<IActionResult> GetAuthorById([FromQuery] Guid id)
+        public async Task<IActionResult> GetPublisherById([FromQuery] Guid id)
         {
-            var author = await _getPublisherUseCase.GetPublisherById(id);
-            return Ok(author);
+            var Publisher = await _getPublisherUseCase.GetPublisherById(id);
+            return Ok(Publisher);
         }
 
         [HttpGet]
-        [Route("GePublishers")]
-        public async Task<IActionResult> GetAuthors()
+        [Route("GetPublishers")]
+        public async Task<IActionResult> GetPublishers()
         {
-            var authors = await _getPublisherUseCase.GetPublishersAsync();
-            return Ok(authors);
+            var Publishers = await _getPublisherUseCase.GetPublishersAsync();
+            return Ok(Publishers);
         }
 
         [HttpPost]
         [Route("UpdatePublisher")]
-        public async Task<IActionResult> UpdateAuthor([FromBody] PublisherUpdateRequestModel publisherUpdate)
+        public async Task<IActionResult> UpdatePublisher([FromBody] PublisherUpdateRequestModel publisherUpdate)
         {
-           var author = await _updatePublisherUseCase.UpdatePublisherAsync(publisherUpdate);
-           return Ok(author);
+           var Publisher = await _updatePublisherUseCase.UpdatePublisherAsync(publisherUpdate);
+           return Ok(Publisher);
         }
     }
 }

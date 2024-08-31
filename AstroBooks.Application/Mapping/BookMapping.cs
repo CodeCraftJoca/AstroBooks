@@ -3,12 +3,7 @@ using AstroBooks.Application.InputModel;
 using AstroBooks.Application.RequestModel;
 using AstroBooks.Domain.Entities;
 using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace AstroBooks.Application.Mapping
 {
@@ -44,6 +39,22 @@ namespace AstroBooks.Application.Mapping
 
             CreateMap<PublisherUpdateRequestModel, PublisherDTO>()
                 .ForMember(dest => dest.Books, opt => opt.Ignore());
+
+            CreateMap<CreateGenreRequestModel, GenreDTO>()
+                        .ForMember(dest => dest.Id, opt => opt.Ignore());
+            CreateMap<GenreDTO, Genre>()
+                .ForMember(dest => dest.Books, opt => opt.Condition(src => src.Books != null));
+
+            CreateMap<Genre, GenreDTO>()
+                .ForMember(dest => dest.Books, opt => opt.Condition(src => src.Books != null));
+
+            CreateMap<GenreUpdateRequestModel, GenreDTO>()
+                .ForMember(dest => dest.Books, opt => opt.Ignore());
+
+
+
+
+
 
 
         }
