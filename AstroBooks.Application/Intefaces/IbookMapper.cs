@@ -1,5 +1,5 @@
 ﻿using AstroBooks.Application.DTO;
-using AstroBooks.Application.RequestModel;
+using AstroBooks.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace AstroBooks.Application.Intefaces
 {
-    public interface ICreateBookUseCase
+    public interface IbookMapper
     {
-        Task<BookDTO> CreateBook(CreateBookRequestModel book);
-
+        Book MapToEntity(BookDTO dto);
+        BookDTO MapToDto(Book book);
+        List<BookDTO> MapToDtoList(List<Book> book);
     }
 }

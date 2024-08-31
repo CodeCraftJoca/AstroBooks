@@ -10,8 +10,8 @@ namespace AstroBooks.Application.Intefaces
     public interface IGetBookUseCase
     {
         Task<BookDTO> GetBookById(Guid id);
-        Task<BookDTO> GetBookByName(string name);
-        Task<IEnumerable<BookDTO>> GetBooks();
+        Task<List<BookDTO>> GetBookByNameAsync(string name);
+        Task<List<BookDTO>> GetBooks();
 
     }
 }

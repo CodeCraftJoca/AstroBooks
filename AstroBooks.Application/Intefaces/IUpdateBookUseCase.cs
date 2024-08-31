@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace AstroBooks.Application.Intefaces
 {
-    public interface ICreateBookUseCase
+    public interface IUpdateBookUseCase
     {
-        Task<BookDTO> CreateBook(CreateBookRequestModel book);
-
+        Task<BookDTO> UpdateBook(UpdateBookRequestModel updateBookRequestModel);
     }
 }

@@ -21,58 +21,69 @@ namespace AstroBooks.Infrastructure.Contexts
         {
             base.OnModelCreating(modelBuilder);
 
+            // Configuração da relação muitos-para-muitos entre Book e Author
             modelBuilder.Entity<Book>()
-                .HasMany(b => b.BookAuthor)
+                .HasMany(b => b.Authors)
                 .WithMany(a => a.Books)
                 .UsingEntity<Dictionary<string, object>>(
-                "BookAuthor",
-                j => j
-                    .HasOne<Author>()
-                    .WithMany()
-                    .HasForeignKey("AuthorId"),
-                j => j
-                    .HasOne<Book>()
-                    .WithMany()
-                    .HasForeignKey("BookId")
-            );
+                    "BookAuthor",
+                    j => j
+                        .HasOne<Author>()
+                        .WithMany()
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Restrict),
+                    j => j
+                        .HasOne<Book>()
+                        .WithMany()
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                );
 
+            // Configuração da relação muitos-para-muitos entre Book e Genre
             modelBuilder.Entity<Book>()
-           .HasMany(b => b.BookGenre)
-           .WithMany(g => g.Books)
-           .UsingEntity<Dictionary<string, object>>(
-               "BookGenre",
-               j => j
-                   .HasOne<Genre>()
-                   .WithMany()
-                   .HasForeignKey("GenreId"),
-               j => j
-                   .HasOne<Book>()
-                   .WithMany()
-                   .HasForeignKey("BookId")
-           );
+                .HasMany(b => b.Genres)
+                .WithMany(g => g.Books)
+                .UsingEntity<Dictionary<string, object>>(
+                    "BookGenre",
+                    j => j
+                        .HasOne<Genre>()
+                        .WithMany()
+                        .HasForeignKey("GenreId")
+                        .OnDelete(DeleteBehavior.Restrict),
+                    j => j
+                        .HasOne<Book>()
+                        .WithMany()
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                );
 
+            // Configuração da relação muitos-para-muitos entre Book e Publisher
             modelBuilder.Entity<Book>()
-          .HasMany(b => b.Publisher)
-          .WithMany(p => p.Books)
-          .UsingEntity<Dictionary<string, object>>(
-              "BookPublisher",
-              j => j
-                  .HasOne<Publisher>()
-                  .WithMany()
-                  .HasForeignKey("PublisherId"),
-              j => j
-                  .HasOne<Book>()
-                  .WithMany()
-                  .HasForeignKey("BookId")
-          );
+                .HasMany(b => b.Publishers)
+                .WithMany(p => p.Books)
+                .UsingEntity<Dictionary<string, object>>(
+                    "BookPublisher",
+                    j => j
+                        .HasOne<Publisher>()
+                        .WithMany()
+                        .HasForeignKey("PublisherId")
+                        .OnDelete(DeleteBehavior.Restrict),
+                    j => j
+                        .HasOne<Book>()
+                        .WithMany()
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                );
 
+            // Definindo chaves primárias
             modelBuilder.Entity<Genre>().HasKey(g => g.Id);
             modelBuilder.Entity<Author>().HasKey(a => a.Id);
             modelBuilder.Entity<Publisher>().HasKey(p => p.Id);
-
+            modelBuilder.Entity<Book>().HasKey(b => b.Id);
         }
 
 
+
     }
-   
+
 }

@@ -7,12 +7,31 @@ using AutoMapper;
 
 namespace AstroBooks.Application.Mapping
 {
-    public class BookMapping: Profile
+    public class ProfileMapping: Profile
     {
-        public BookMapping()
+        public ProfileMapping()
         {
-            CreateMap<Book, BookDTO>();
-            CreateMap<BookDTO, Book>();
+
+
+            CreateMap<Book, BookDTO>()
+                 .ForMember(dest => dest.ISBN, opt => opt.MapFrom(src => src.ISBN))
+                 .ForMember(dest => dest.Language, opt => opt.MapFrom(src => src.Language))
+                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
+                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                 .ForMember(dest => dest.Genres, opt => opt.MapFrom(src => src.Genres))
+                 .ForMember(dest => dest.Authors, opt => opt.MapFrom(src => src.Authors))
+                 .ForMember(dest => dest.Publishers, opt => opt.MapFrom(src => src.Publishers));
+
+            CreateMap<BookDTO, Book>()
+                .ForMember(dest => dest.ISBN, opt => opt.MapFrom(src => src.ISBN))
+                .ForMember(dest => dest.Language, opt => opt.MapFrom(src => src.Language))
+                .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Genres, opt => opt.MapFrom(src => src.Genres))
+                .ForMember(dest => dest.Authors, opt => opt.MapFrom(src => src.Authors))
+                .ForMember(dest => dest.Publishers, opt => opt.MapFrom(src => src.Publishers));
+
+
             CreateMap<Author, AuthorDTO>()
                         .ForMember(dest => dest.Books, opt => opt.Condition(src => src.Books != null));
             CreateMap<AuthorDTO, Author>()

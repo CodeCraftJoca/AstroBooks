@@ -9,12 +9,14 @@ namespace AstroBooks.Infrastructure.Repository.Interfaces
 {
     public interface IBookRepository
     {
-        Task<IEnumerable<Book>> GetBooks();
+        Task<List<Book>> GetBooks();
         Task<Book> GetBookById(Guid id);
-        Task<Book> CreateBook(Book book);
-        Task<Book> UpdateBook(Guid id, Book book);
-        Task<Book> DeleteBook(Guid id);
+        Task<Book> CreateBookAsync(Book book);
+        Task<Book> UpdateBookAsync(Book book);
+        Task DeleteBookSync(Guid id);
         Task<bool> BookIdExistsAsync(Guid id);
+        Task<List<Book>> GetBooksByNameAsync(string name);
+        
 
     }
 }
